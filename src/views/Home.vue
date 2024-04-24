@@ -4,8 +4,7 @@
 </template>
 
 <script>
-
-import RatingTable from '../components/RatingTable.vue';
+import RatingTable from '@/components/RatingTable.vue';
 export default {
     components: { RatingTable }, 
 };

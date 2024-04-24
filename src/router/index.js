@@ -1,29 +1,41 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import Home from '@/views/Home.vue'
-import Evaluation from '@/views/peerevaluation/Evaluation.vue'
+import StudentRegistration from '@/student/StudentRegistration.vue'
+import PeerEvaluation from '@/student/PeerEvaluation.vue';
+// import ManageTasks from '@/student/ManageTasks.vue';
+import MyTeam from '@/views/common/MyTeam.vue';
 
-import NotFound from '@/views/common/NotFound.vue';
+// import NotFound from '@/views/common/NotFound.vue';
 
 const router = createRouter ({
-    history: createWebHistory(process.env.BASE_URL),
+    history: createWebHistory(),
     routes: [
         {
             path: '/', 
-            meta: { class: 'home' },
+            // meta: { class: 'home' },
             name: 'home',
             component: Home 
         }, 
         {
-            path: '/peerevaluation', 
-            meta: { class: 'peer-evaluation' },
+            path: '/peereval', 
             name: 'evaluation',
             component: PeerEvaluation, 
         }, 
         {
-            path: '/:pathMatch(.*)*', //any character zero or more
-            component: NotFound
+            path: '/studentaccount',
+            name: 'student-account',
+            component: StudentRegistration,
         },
+        {
+            path: '/team',
+            name: 'my-team',
+            component: MyTeam,
+        }
+        // {
+        //     path: '/:pathMatch(.*)*', //any character zero or more
+        //     component: NotFound
+        // },
     ]
 
 })

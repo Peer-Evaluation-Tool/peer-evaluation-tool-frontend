@@ -3,6 +3,9 @@
       <!-- This version will make changing path of a view easier -->
       <router-link :to="{ name: 'evaluation' }">Evaluation</router-link>
       <router-link :to="{ name: 'home' }">Home</router-link>
+      <router-link :to="{ name: 'student-account' }">Student Page</router-link>
+      <router-link :to="{ name: 'my-team' }">My Team</router-link>
+
     </div>
 </template>
 
