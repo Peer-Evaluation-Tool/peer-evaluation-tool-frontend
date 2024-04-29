@@ -60,10 +60,11 @@ export default {
             const adminPassword = 'password';
 
             if (this.email === adminEmail && this.password === adminPassword) {
-                alert('Admin login successful. Redirecting to admin home...');
-                this.$router.push('/admin-home'); // Make sure the path exists in your router configuration
+                alert('Admin login successful. Redirecting to admin navigation...');
+                this.$router.push({ name: 'admin-navigation' }); // Redirect using route name
             } else {
                 this.invalidCredentials = true;
+                alert('Invalid admin credentials.');
             }
         }
     }
