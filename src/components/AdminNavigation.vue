@@ -3,6 +3,7 @@
         <!-- Links to admin-specific components -->
         <router-link :to="{ name: 'find-student' }">Find Student</router-link>
         <router-link :to="{ name: 'invite-students' }">Invite Students</router-link>
+        <router-link :to="{ name: 'find-sections' }">Find Sections</router-link>
         <router-link :to="{ name: 'team-management' }">Team Management</router-link>
     </div>
 </template>
