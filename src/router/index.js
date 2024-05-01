@@ -9,6 +9,7 @@ import login from '@/components/login.vue';
 import FindStudent from '@/admin/FindStudent.vue';
 import InviteStudents from '@/admin/InviteStudents.vue';
 import TeamManagement from '@/admin/TeamManagement.vue';
+import FindSections from '@/admin/FindSections.vue'
 import AdminNavigation from '@/components/AdminNavigation.vue';
 // import NotFound from '@/views/common/NotFound.vue';
 
@@ -62,10 +63,15 @@ const router = createRouter ({
   component: TeamManagement,
  },
  {
+    path: '/find-sections',
+    name: 'find-sections',
+    component: FindSections,
+  },
+ {
     path: '/admin-navigation',
     name: 'admin-navigation',
     component: AdminNavigation,
-  }
+  },
         // {
         //     path: '/:pathMatch(.*)*', //any character zero or more
         //     component: NotFound
