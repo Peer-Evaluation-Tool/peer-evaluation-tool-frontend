@@ -22,7 +22,7 @@
         <h3 class="text-lg font-semibold">Search Results</h3>
         <ul v-if="searchResults.length > 0" class="list-disc pl-5">
           <li v-for="section in sortedSearchResults" :key="section.id">
-            {{ section.firstName }} {{ section.lastName }} - {{ section.academicYear }} - {{ section.teamName }}
+            {{ section.sectionName }} - {{ section.academicYear }}
           </li>
         </ul>
         <div v-else>No matching sections found.</div>
@@ -38,7 +38,9 @@
           sectionName: '',
           academicYear: '',
         },
-        searchResults: []
+        searchResults: [],
+        // searchUrl: 'http://localhost:8080/api/v1/sections'
+        searchUrl: 'https://peer-evaluation-tool.onrender.com/api/v1/sections'
       };
     },
     computed: {
@@ -53,10 +55,8 @@
     },
     methods: {
       searchSections() {
-        fetch('/api/sections', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(this.searchCriteria)
+        fetch(this.searchUrl + '/' + this.searchCriteria.sectionName, {
+          method: 'GET'
         })
           .then(response => response.json())
           .then(data => {
