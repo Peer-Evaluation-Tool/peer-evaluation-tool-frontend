@@ -11,6 +11,8 @@ import InviteStudents from '@/admin/InviteStudents.vue';
 import TeamManagement from '@/admin/TeamManagement.vue';
 import FindSections from '@/admin/FindSections.vue'
 import AdminNavigation from '@/components/AdminNavigation.vue';
+import EditAccount from '@/student/EditAccount.vue';
+import ManageTasks from '@/student/ManageTasks.vue';
 // import NotFound from '@/views/common/NotFound.vue';
 
 const router = createRouter({
@@ -76,6 +78,17 @@ const router = createRouter({
             name: 'admin-navigation',
             component: AdminNavigation,
         },
+         {
+            path: '/edit-account',
+            name: 'edit-account',
+            component: EditAccount,
+        },
+           {
+            path: '/manage-task',
+            name: 'manage-task',
+            component: ManageTasks,
+        },
+        
         // {
         //     path: '/:pathMatch(.*)*', //any character zero or more
         //     component: NotFound

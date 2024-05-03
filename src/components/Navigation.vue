@@ -5,6 +5,12 @@
     <router-link :to="{ name: 'home' }">Home</router-link>
     <router-link :to="{ name: 'student-account' }">Student Page</router-link>
     <router-link :to="{ name: 'my-team' }">My Team</router-link>
+    <router-link :to="{ name: 'edit-account' }">Edit Account</router-link>
+    <router-link :to="{ name: 'manage-task' }">Manage Task</router-link>
+
+
+
+
   </div>
 </template>
 
