@@ -13,71 +13,85 @@ import FindSections from '@/admin/FindSections.vue'
 import AdminNavigation from '@/components/AdminNavigation.vue';
 // import NotFound from '@/views/common/NotFound.vue';
 
-const router = createRouter ({
+const router = createRouter({
     history: createWebHistory(),
     routes: [
-    {
+        {
             path: '/',
             name: 'login',
             component: login,
         },
         {
-            path: '/home', 
-            // meta: { class: 'home' },
+            path: '/home',
             name: 'home',
-            component: Home 
-        }, 
+            component: Home,
+          meta: { requiresAuth: true }
+        },
         {
-            path: '/peereval', 
+            path: '/peereval',
             name: 'evaluation',
-            component: PeerEvaluation, 
-        }, 
+            component: PeerEvaluation,
+        //    meta: { requiresAuth: true }
+        },
         {
             path: '/studentaccount',
             name: 'student-account',
             component: StudentRegistration,
+       //    meta: { requiresAuth: true }
         },
         {
             path: '/team',
             name: 'my-team',
             component: MyTeam,
+         //    meta: { requiresAuth: true }
         },
         {
             path: '/register',
             name: 'register',
             component: StudentRegistration,
+
         },
         {
-  path: '/find-student',
-  name: 'find-student',
-  component: FindStudent,
-},
-{
-  path: '/invite-students',
-  name: 'invite-students',
-  component: InviteStudents,
-},
-{
-  path: '/team-management',
-  name: 'team-management',
-  component: TeamManagement,
- },
- {
-    path: '/find-sections',
-    name: 'find-sections',
-    component: FindSections,
-  },
- {
-    path: '/admin-navigation',
-    name: 'admin-navigation',
-    component: AdminNavigation,
-  },
+            path: '/find-student',
+            name: 'find-student',
+            component: FindStudent,
+        },
+        {
+            path: '/invite-students',
+            name: 'invite-students',
+            component: InviteStudents,
+        },
+        {
+            path: '/team-management',
+            name: 'team-management',
+            component: TeamManagement,
+        },
+        {
+            path: '/find-sections',
+            name: 'find-sections',
+            component: FindSections,
+        },
+        {
+            path: '/admin-navigation',
+            name: 'admin-navigation',
+            component: AdminNavigation,
+        },
         // {
         //     path: '/:pathMatch(.*)*', //any character zero or more
         //     component: NotFound
         // },
     ]
 
-})
+});
+router.beforeEach((to, from, next) => {
+    const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
+    const isAuthenticated = localStorage.getItem('isAuthenticated') === 'true';
+
+    if (requiresAuth && !isAuthenticated) {
+        next('/');
+    } else {
+        next();
+    }
+});
 
 export default router;
