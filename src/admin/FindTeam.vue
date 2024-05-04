@@ -74,7 +74,8 @@
           instructorId: '',
         },
         searchResults: [],
-        searchUrl: 'http://localhost:80/api/v1/teams'
+        //searchUrl: 'http://localhost:80/api/v1/teams'
+        searchUrl: 'https://peer-eval-tool-backend.azurewebsites.net/api/v1/teams'
       };
     },
     methods: {

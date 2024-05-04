@@ -7,6 +7,7 @@
         <router-link :to="{ name: 'find-teams' }">Find Teams</router-link>
         <router-link :to="{ name: 'team-management' }">Team Management</router-link>
         <router-link :to="{ name: 'create-section' }">Create Section</router-link>
+        <router-link :to="{ name: 'create-team' }">Create Team</router-link>
     </div>
 </template>
 
