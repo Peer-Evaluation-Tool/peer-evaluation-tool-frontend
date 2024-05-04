@@ -39,7 +39,7 @@
           academicYear: '',
         },
         searchResults: [],
-        searchUrl: 'http://localhost:8080/api/v1/sections'
+        searchUrl: 'http://localhost:80/api/v1/sections'
         // searchUrl: 'https://peer-evaluation-tool.onrender.com/api/v1/sections'
       };
     },
