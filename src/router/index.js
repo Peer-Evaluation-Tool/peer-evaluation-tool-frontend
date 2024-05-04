@@ -77,11 +77,11 @@ const router = createRouter({
             name: 'admin-navigation',
             component: AdminNavigation,
         },
-  {
-    path: '/create-section',
-    name: 'create-section',
-    component: CreateSection,
-  }
+        {
+            path: '/create-section',
+            name: 'create-section',
+            component: CreateSection,
+        },
         // {
         //     path: '/:pathMatch(.*)*', //any character zero or more
         //     component: NotFound
