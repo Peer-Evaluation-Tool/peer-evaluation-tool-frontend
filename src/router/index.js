@@ -13,6 +13,7 @@ import FindSections from '@/admin/FindSections.vue'
 import FindTeam from '@/admin/FindTeam.vue';
 import AdminNavigation from '@/components/AdminNavigation.vue';
 import CreateSection from '../admin/CreateSection.vue';
+import CreateTeam from '@/admin/CreateTeam.vue'
 // import NotFound from '@/views/common/NotFound.vue';
 
 const router = createRouter({
@@ -87,6 +88,11 @@ const router = createRouter({
             path: '/create-section',
             name: 'create-section',
             component: CreateSection,
+        },
+        {
+            path: '/create-team',
+            name: 'create-team',
+            component: CreateTeam,
         },
         // {
         //     path: '/:pathMatch(.*)*', //any character zero or more
