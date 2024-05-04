@@ -21,8 +21,8 @@
       <div class="mt-6">
         <h3 class="text-lg font-semibold">Search Results</h3>
         <ul v-if="searchResults.length > 0" class="list-disc pl-5">
-          <li v-for="section in sortedSearchResults" :key="section.id">
-            {{ section.firstName }} {{ section.lastName }} - {{ section.academicYear }} - {{ section.teamName }}
+          <li v-for="section in searchResults" :key="section.id">
+            Name: {{ section.id }} - Year: {{ section.year }}
           </li>
         </ul>
         <div v-else>No matching sections found.</div>
@@ -38,34 +38,52 @@
           sectionName: '',
           academicYear: '',
         },
-        searchResults: []
+        searchResults: [],
+        searchUrl: 'http://localhost:8080/api/v1/sections'
+        // searchUrl: 'https://peer-evaluation-tool.onrender.com/api/v1/sections'
       };
-    },
-    computed: {
-      sortedSearchResults() {
-        return this.searchResults.sort((a, b) => {
-          // Sorting by academic year (descending) and then by last name (ascending)
-          const yearComparison = b.academicYear.localeCompare(a.academicYear);
-          if (yearComparison !== 0) return yearComparison;
-          return a.lastName.localeCompare(b.lastName);
-        });
-      }
     },
     methods: {
       searchSections() {
-        fetch('/api/sections', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(this.searchCriteria)
-        })
-          .then(response => response.json())
-          .then(data => {
-            this.searchResults = data; // Assuming the response data is an array of sections
+        this.searchResults = []
+        // Search by Section Name
+        if(this.searchCriteria.sectionName !== ''){
+          fetch(this.searchUrl + '//' + this.searchCriteria.sectionName, {
+            method: 'GET'
           })
-          .catch(error => {
-            console.error('Error:', error);
-            this.searchResults = [];
-          });
+            .then(response => response.json())
+            .then(data => {
+              this.searchResults = data.data; // Assuming the response data is an array of sections
+              console.log('+')
+              console.log(this.searchResults)
+              console.log(data.data)
+              console.log('+')
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              this.searchResults = [];
+            });
+        }
+        // Search by Academic Year
+        else if(this.searchCriteria.academicYear !== ''){
+          fetch(this.searchUrl + '/allbyyear/' + this.searchCriteria.academicYear, {
+            method: 'GET'
+          })
+            .then(response => response.json())
+            .then(data => {
+              this.searchResults = data.data; // Assuming the response data is an array of sections
+              console.log(this.searchResults)
+            })
+            .catch(error => {
+              console.error('Error:', error);
+              this.searchResults = [];
+            });
+        }
+        else{
+          this.searchCriteria.academicYear = ''
+          this.searchCriteria.sectionName = ''
+          this.searchResults = []
+        }
       }
     }
   }
