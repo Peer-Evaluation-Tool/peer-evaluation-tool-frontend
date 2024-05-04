@@ -81,7 +81,7 @@ export default {
       })
         .then(response => response.json())
         .then(data => {
-          this.searchResults = data; // Assuming the response data is an array of students
+          this.searchResults = data; // Assuming the response data is an array of students //
         })
         .catch(error => {
           console.error('Error:', error);

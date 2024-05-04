@@ -47,12 +47,12 @@ export default {
         loginUser() {
             const validEmail = 'user@example.com';
             const validPassword = 'password';
-
             if (this.email === validEmail && this.password === validPassword) {
-                alert('Login successful. Redirecting to dashboard...');
-                this.$router.push('/dashboard'); // Use Vue Router for SPA behavior
+                localStorage.setItem('isAuthenticated', 'true'); // Set authentication flag
+                this.$router.push('/home'); // Redirect to home page
             } else {
                 this.invalidCredentials = true;
+                alert('Invalid credentials. Please try again.');
             }
         },
         loginAsAdmin() {
@@ -60,8 +60,9 @@ export default {
             const adminPassword = 'password';
 
             if (this.email === adminEmail && this.password === adminPassword) {
+                localStorage.setItem('isAuthenticated', 'true'); // Set authentication flag for admin as well
                 alert('Admin login successful. Redirecting to admin navigation...');
-                this.$router.push({ name: 'admin-navigation' }); // Redirect using route name
+                this.$router.push('/admin-navigation');
             } else {
                 this.invalidCredentials = true;
                 alert('Invalid admin credentials.');
