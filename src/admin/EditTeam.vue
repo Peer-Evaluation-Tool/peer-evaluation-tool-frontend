@@ -54,7 +54,7 @@
     methods: {
       addTeams() {
         this.addResults = []
-        fetch(this.addUrl, {
+        fetch(this.addUrl + "/" +this.addCriteria.id, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(this.addCriteria)
